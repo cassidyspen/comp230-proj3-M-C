@@ -7,11 +7,19 @@ public class MSS1
 		Scanner sc = new Scanner(System.in);
 
 		//get input from the user
-		System.out.println("Enter the name of the file");
-		String filename = sc.nextLine();
+		System.out.println("Enter a sequence");
+		String sequence = sc.nextLine();
+		String[] strArr = sequence.split(",");
+		
+		int[] intArr = new int[strArr.length];
+		
+		for(int i=0; i<strArr.length; i++)
+		{
+			intArr[i] = Integer.parseInt(strArr[i]);
+		}
 
-		//open file connection
-		BufferedReader br = new Filereader
+
+		
 	}
 }
 
