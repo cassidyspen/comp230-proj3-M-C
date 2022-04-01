@@ -5,8 +5,6 @@ public class MSS2 {
 	public static void main(String[] args){
 		BufferedReader input;
 		String inputLine;
-		int maxSum = 0;
-		int sum = 0;
 
 		//reading in the file
 		try
@@ -26,17 +24,10 @@ public class MSS2 {
 					intArray[i] = Integer.parseInt(strArr[i]);
 			
 			
-				//MSS2 Algorithm
-				for(int i=0; i<intArray.length; i++){
-					sum = 0;
-					for(int j=i; j<intArray.length-1; j++){
-						sum += intArray[j];
-						if(sum > maxSum)
-							maxSum = sum;
-					}
-				}
+				int mss1ans = mss1alg(intArray);
+				int mss2ans = mss2alg(intArray);
 
-				System.out.println(maxSum);
+				System.out.println("\nMss1 answer: "+mss1ans+"\nMss2 answer: "+mss2ans);
 			}
 
 
@@ -54,5 +45,45 @@ public class MSS2 {
 		
 		
 	}
+	/*method for mss1*/
+     public static int mss1alg(int[] arr)
+     {
+         int sum = 0,maxSum = 0;
+         for(int i=0; i<arr.length; i++)
+         {
+             for(int j=i; j<arr.length; j++)
+             {
+                 sum = 0;
+                 for(int k=i; k<=j; k++)
+                     sum += arr[k];
+                 if (sum > maxSum)
+                     maxSum = sum;
+             }
+         }
+         return maxSum;
+     }
+
+	/*MSS2 Algorithm*/
+	public static int mss2alg(int[] arr)
+	{
+		int sum=0,maxSum=0;
+		for(int i=0; i<arr.length; i++){
+        	sum = 0;
+            for(int j=i; j<arr.length; j++){
+            	sum += arr[j];
+                if(sum > maxSum)
+                	maxSum = sum;
+            }
+        }
+ 
+        return maxSum;
+    }
+
+	/*MSS3 Algorithm*/
+	public static int mss3alg(int[] arr)
+	{
+		int[] left = 
+	}
+	
 }
 
