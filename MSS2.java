@@ -88,7 +88,7 @@ public class MSS2 {
 
 	//Finds the max of the maxLeftBoundSum, maxRightBoundSum, and 
 	//maxLeftBoundSum + maxRightBoundSum
-	public static int middle(int[] arr, int first, int last)
+	public static int middle(int[] arr, int first,int mid, int last)
 	{
 		//finding maxLeftBoundSum
 		int sum=0;
@@ -112,5 +112,20 @@ public class MSS2 {
 
 		return Math.max(maxRightSum + maxLeftSum, maxLeftSum, maxRightSum);
 	}
+ /*method for recurrsion*/
+     public static int mss3Recursion(int[] arr, int first, int last)
+     {
+         //base case
+         if (first == last)
+             return arr[first];
+ 
+         //find middle point
+         int mid = (first + last) /2;
+ 
+         //return max(maxLeftSum, maxRightSum, maxLeftBoundSum +
+         //maxRightBoundSum)
+         return Math.max(mss3Recursion(arr,first,mid),mss3Recursion(arr,mid+1,last),middle(arr,first,mid,last));
+ 
+     }	
 }
 
