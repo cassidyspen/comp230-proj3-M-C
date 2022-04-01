@@ -80,10 +80,37 @@ public class MSS2 {
     }
 
 	/*MSS3 Algorithm*/
+	//Driver program for recursive function//
 	public static int mss3alg(int[] arr)
 	{
 		int[] left = 
 	}
-	
+
+	//Finds the max of the maxLeftBoundSum, maxRightBoundSum, and 
+	//maxLeftBoundSum + maxRightBoundSum
+	public static int middle(int[] arr, int first, int last)
+	{
+		//finding maxLeftBoundSum
+		int sum=0;
+		int maxLeftSum = arr[mid];
+		for(int i = mid; i>first; i--)
+		{
+			sum += arr[i];
+			if(sum>maxLeftSum)
+				maxLeftSum = sum;
+		}
+
+		//finding maxRightBoundSum
+		int sum = 0;
+		int maxRightSum = arr[mid + 1];
+		for(int i = mid + 1; i<last; i++)
+		{
+			sum += arr[i];
+			if(sum>maxRightSum)
+				maxRightSum = sum;	
+		}
+
+		return Math.max(maxRightSum + maxLeftSum, maxLeftSum, maxRightSum);
+	}
 }
 
