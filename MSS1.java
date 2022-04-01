@@ -42,5 +42,20 @@ public class MSS1
 		}
 		return maxSum;
 	}
+	/*method for recurrsion*/
+	public static int mss3Recursion(int[] arr, int first, int last)
+	{
+		//base case
+		if (first == last)
+			return arr[first];
+		
+		//find middle point
+		int mid = (first + last) /2;
+
+		//return max(maxLeftSum, maxRightSum, maxLeftBoundSum +
+		//maxRightBoundSum)
+		return Math.max(mss3Recursion(arr,first,mid),mss3Recursion(arr,mid+1,last),maxCross(arr,first,mid,last));
+
+	}
 
 }
