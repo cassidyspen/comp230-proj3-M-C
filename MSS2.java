@@ -26,8 +26,10 @@ public class MSS2 {
 			
 				int mss1ans = mss1alg(intArray);
 				int mss2ans = mss2alg(intArray);
+				int mss3ans = mss3alg(intArray, 0, intArray.length-1);
 
-				System.out.println("\nMss1 answer: "+mss1ans+"\nMss2 answer: "+mss2ans);
+				System.out.println("\nMSS1 answer: "+mss1ans+"\nMSS2 answer: "+mss2ans
+									+ "\nMSS3 answer: " +mss3ans);
 			}
 
 
@@ -79,13 +81,6 @@ public class MSS2 {
         return maxSum;
     }
 
-	/*MSS3 Algorithm*/
-	//Driver program for recursive function//
-	public static int mss3alg(int[] arr)
-	{
-		int[] left = 
-	}
-
 	//Finds the max of the maxLeftBoundSum, maxRightBoundSum, and 
 	//maxLeftBoundSum + maxRightBoundSum
 	public static int middle(int[] arr, int first,int mid, int last)
@@ -93,7 +88,7 @@ public class MSS2 {
 		//finding maxLeftBoundSum
 		int sum=0;
 		int maxLeftSum = arr[mid];
-		for(int i = mid; i>first; i--)
+		for(int i = mid; i>= first; i--)
 		{
 			sum += arr[i];
 			if(sum>maxLeftSum)
@@ -101,19 +96,19 @@ public class MSS2 {
 		}
 
 		//finding maxRightBoundSum
-		int sum = 0;
+		int sum2 = 0;
 		int maxRightSum = arr[mid + 1];
-		for(int i = mid + 1; i<last; i++)
+		for(int i = mid + 1; i<=last; i++)
 		{
-			sum += arr[i];
-			if(sum>maxRightSum)
-				maxRightSum = sum;	
+			sum2 += arr[i];
+			if(sum2>maxRightSum)
+				maxRightSum = sum2;	
 		}
 
-		return Math.max(maxRightSum + maxLeftSum, maxLeftSum, maxRightSum);
+		return Math.max(maxRightSum + maxLeftSum, Math.max(maxLeftSum, maxRightSum));
 	}
- /*method for recurrsion*/
-     public static int mss3Recursion(int[] arr, int first, int last)
+ /*method for recursion*/
+     public static int mss3alg(int[] arr, int first, int last)
      {
          //base case
          if (first == last)
@@ -124,7 +119,7 @@ public class MSS2 {
  
          //return max(maxLeftSum, maxRightSum, maxLeftBoundSum +
          //maxRightBoundSum)
-         return Math.max(mss3Recursion(arr,first,mid),mss3Recursion(arr,mid+1,last),middle(arr,first,mid,last));
+         return Math.max(mss3alg(arr,first,mid), Math.max(mss3alg(arr,mid+1,last),middle(arr,first,mid,last)));
  
      }	
 }

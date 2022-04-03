@@ -42,7 +42,7 @@ public class MSS1
 		}
 		return maxSum;
 	}
-	/*method for recurrsion*/
+	/*method for recursion*/
 	public static int mss3Recursion(int[] arr, int first, int last)
 	{
 		//base case
