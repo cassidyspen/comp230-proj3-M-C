@@ -13,7 +13,19 @@ public class MSS2 {
 			//int[] intArray;
 			
 			//TODO change file input to variable
-			input = new BufferedReader(new FileReader("negative.txt"));
+			Scanner scan = new Scanner(System.in);
+			System.out.println("What file would you like to use?");
+			String user_input = scan.nextLine();
+			
+			System.out.println("\nYour menu, madam/sir (please enter your number selection)\n");
+			System.out.println("Item # \t Name \t Cost");
+			System.out.println("\n1.     \t MSS1 \t Muy Expensive");
+			System.out.println("2.     \t MSS2 \t Expensive");
+			System.out.println("3.     \t MSS3 \t A lil Expensive");
+			System.out.println("4.     \t MSS4 \t CHEAP");
+			System.out.println("5.     \t ALL  \t Oooh you fancy");
+
+			input = new BufferedReader(new FileReader(user_input));
 			while((inputLine = input.readLine()) != null) {
 				strArr = inputLine.split(",");
 			
@@ -37,7 +49,7 @@ public class MSS2 {
 		} //end try
 		catch (FileNotFoundException e)
 		{
-			System.out.println("File not found, please enter a valid file name.");
+			System.out.println("\nFile not found, please enter a valid file name.");
 			System.exit(1);
 		} // catch
 		catch (IOException e)
