@@ -13,7 +13,7 @@ public class MSS2 {
 			//int[] intArray;
 			
 			//TODO change file input to variable
-			input = new BufferedReader(new FileReader("nums0.txt"));
+			input = new BufferedReader(new FileReader("negative.txt"));
 			while((inputLine = input.readLine()) != null) {
 				strArr = inputLine.split(",");
 			
@@ -27,9 +27,10 @@ public class MSS2 {
 				int mss1ans = mss1alg(intArray);
 				int mss2ans = mss2alg(intArray);
 				int mss3ans = mss3alg(intArray, 0, intArray.length-1);
+				int mss4ans = mss4alg(intArray);
 
 				System.out.println("\nMSS1 answer: "+mss1ans+"\nMSS2 answer: "+mss2ans
-									+ "\nMSS3 answer: " +mss3ans);
+									+ "\nMSS3 answer: " +mss3ans+"\nMSS4 answer: "+mss4ans);
 			}
 
 
@@ -121,6 +122,20 @@ public class MSS2 {
          //maxRightBoundSum)
          return Math.max(mss3alg(arr,first,mid), Math.max(mss3alg(arr,mid+1,last),middle(arr,first,mid,last)));
  
-     }	
+     }
+	 /*method for mss4*/
+	 public static int mss4alg(int[] arr)
+	 {
+		int maxSum = 0, sum = 0;
+		for(int j=0; j<arr.length; j++)
+		{
+			sum += arr[j];
+			if(sum > maxSum)
+				maxSum = sum;
+			else if(sum < 0)
+				sum = 0;
+		}
+		return maxSum;
+	 }
 }
 
