@@ -5,94 +5,109 @@ public class MSS2 {
 	public static void main(String[] args){
 		BufferedReader input;
 		String inputLine;
+		String rerun = "";
+		Scanner scan = new Scanner(System.in);
+		String[] strArr;
 
-		//reading in the file
-		try
-		{
-			//declare variables
-			String[] strArr;
-			//int[] intArray;
-		//	int time1 = 0, time2 = 0, time3 = 0, time4 = 0, firstTime = 0, lastTime = 0;
-
-			//TODO change file input to variable
-			Scanner scan = new Scanner(System.in);
-			System.out.println("What file would you like to use?");
-			String user_input = scan.nextLine();
-			
-			//display menu
-			System.out.println("\nYour menu, madam/sir (please enter your number selection)\n");
-			System.out.print("Item # \t Name \t Cost\n"
-							  +"---------------------------------");
-			System.out.println("\n1.     \t MSS1 \t Muy Expensive");
-			System.out.println("2.     \t MSS2 \t Expensive");
-			System.out.println("3.     \t MSS3 \t A lil Expensive");
-			System.out.println("4.     \t MSS4 \t CHEAP");
-			System.out.println("5.     \t ALL  \t Oooh you fancy\n");
-
-			//user input
-			int choice = scan.nextInt();
-			while(choice<1 || choice>5)
+		do {
+			//reading in the file
+			try
 			{
-				System.out.println("\nError: Please enter 1 to 5");
-				choice = scan.nextInt();
-			}
-
-
-			input = new BufferedReader(new FileReader(user_input));
-			while((inputLine = input.readLine()) != null) {
-				strArr = inputLine.split(",");
+				//declare variables
+				//int[] intArray;
+			//	int time1 = 0, time2 = 0, time3 = 0, time4 = 0, firstTime = 0, lastTime = 0;
+	
+				//TODO change file input to variable
+				System.out.println("What file would you like to use?");
+				String user_input = scan.nextLine();
 			
+				//display menu
+				System.out.println("\nYour menu, madam/sir (please enter your number selection)\n");
+				System.out.print("Item # \t Name \t Cost\n"
+								  +"---------------------------------");
+				System.out.println("\n1.     \t MSS1 \t Muy Expensive");
+				System.out.println("2.     \t MSS2 \t Expensive");
+				System.out.println("3.     \t MSS3 \t A lil Expensive");
+				System.out.println("4.     \t MSS4 \t CHEAP");
+				System.out.println("5.     \t ALL  \t Oooh you fancy\n");
+	
+				//user input
+				int choice = scan.nextInt();
+				while(choice<1 || choice>5)
+				{
+					System.out.println("\nError: Please enter 1 to 5");
+					choice = scan.nextInt();
+				}
+
+
+				input = new BufferedReader(new FileReader(user_input));
+				//if((inputLine = input.readLine()) != null) 
+				inputLine = input.readLine();	
+				strArr = inputLine.split(",");
+				input.close();	
 			
 				//convert string array into int array
 				int[] intArray = new int[strArr.length];
 				for(int i=0; i<strArr.length; i++)
 					intArray[i] = Integer.parseInt(strArr[i]);
+				
+				System.out.println();
+				switch(choice)
+				{
+					case 1:
+						runAlgs(intArray,choice);
+						break;
+					case 2:
+						runAlgs(intArray,choice);
+						break;
+					case 3:
+						runAlgs(intArray,choice);
+						break;
+					case 4:
+						runAlgs(intArray,choice);
+						break;
+					default:
+						System.out.print("MSS1:\t");
+						runAlgs(intArray,1);
+						System.out.print("MSS2:\t");
+						runAlgs(intArray,2);
+						System.out.print("MSS3:\t");
+						runAlgs(intArray,3);
+						System.out.print("MSS4:\t");
+						runAlgs(intArray,4);
+				}
+	
+				//	System.out.println("\nMSS1 answer: "+mss1ans+"\nMSS2 answer: "+mss2ans
+				//						+ "\nMSS3 answer: " +mss3ans+"\nMSS4 answer: "+mss4ans);
+				//}
 			
-			System.out.println();
-			switch(choice)
+
+			} //end try
+			catch (FileNotFoundException e)
 			{
-				case 1:
-					runAlgs(intArray,choice);
-					break;
-				case 2:
-					runAlgs(intArray,choice);
-					break;
-				case 3:
-					runAlgs(intArray,choice);
-					break;
-				case 4:
-					runAlgs(intArray,choice);
-					break;
-				default:
-					System.out.print("MSS1:\t");
-					runAlgs(intArray,1);
-					System.out.print("MSS2:\t");
-					runAlgs(intArray,2);
-					System.out.print("MSS3:\t");
-					runAlgs(intArray,3);
-					System.out.print("MSS4:\t");
-					runAlgs(intArray,4);
-			}
-
-			//	System.out.println("\nMSS1 answer: "+mss1ans+"\nMSS2 answer: "+mss2ans
-			//						+ "\nMSS3 answer: " +mss3ans+"\nMSS4 answer: "+mss4ans);
-			}
-
-
-		} //end try
-		catch (FileNotFoundException e)
-		{
-			System.out.println("\nFile not found, please enter a valid file name.");
-			System.exit(1);
-		} // catch
-		catch (IOException e)
-		{
-			System.out.println(e.getMessage());
-			System.exit(1);
-		} // end catch
+				System.out.println("\nFile not found, please enter a valid file name.");
+				System.exit(1);
+			} // catch
+			catch (IOException e)
+			{
+				System.out.println(e.getMessage());
+				System.exit(1);
+			} // end catch
 		
+			
+			System.out.println("\nDo you want to run the program again (y for yes and n for no)?");
+			rerun = scan.nextLine();
+			rerun = scan.nextLine();
+				
+			while((!rerun.equalsIgnoreCase("y")) && (!rerun.equalsIgnoreCase("n"))){
+				System.out.println("\nInvalid input: please enter a 'y' or 'n'");
+				rerun = scan.nextLine();
+			}
+		}
+		while(rerun.equalsIgnoreCase("y"));
 		
 	}
+
 	public static void runAlgs(int[] intArray,int alg)
 	{
 		long firstTime = System.nanoTime();
