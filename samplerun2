@@ -1,0 +1,25 @@
+Script started on 2022-04-06 14:56:17-07:00
+]0;madeleinewoo@bec307dl05:~/comp230/proj3/comp230-proj3-M-C[38;5;39mmadeleinewoo(B[m[38;5;15m@(B[m[38;5;136mbec307dl05(B[m[38;5;15m (B[m[38;5;2mcomp230-proj3-M-C(B[m[38;5;15m>(B[m java proj[K[K[K[KProj3
+What file would you like to use?
+reallylong.txt
+
+Your menu, madam/sir (please enter your number selection)
+
+Item # 	 Name 	 Cost
+---------------------------------
+1.     	 MSS1 	 Muy Expensive
+2.     	 MSS2 	 Expensive
+3.     	 MSS3 	 A lil Expensive
+4.     	 MSS4 	 CHEAP
+5.     	 ALL  	 Oooh you fancy
+
+4
+
+Answer: 460230328	Time: 9510
+
+Do you want to run the program again (y for yes and n for no)?
+n
+]0;madeleinewoo@bec307dl05:~/comp230/proj3/comp230-proj3-M-C[38;5;39mmadeleinewoo(B[m[38;5;15m@(B[m[38;5;136mbec307dl05(B[m[38;5;15m (B[m[38;5;2mcomp230-proj3-M-C(B[m[38;5;15m>(B[m s[Kexit
+exit
+
+Script done on 2022-04-06 14:56:53-07:00
