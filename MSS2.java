@@ -118,7 +118,7 @@ public class MSS2
 	public static void runAlgs(int[] intArray,int alg)
 	{
 		long firstTime = System.nanoTime();
-		int answer = 0;
+		long answer = 0;
 		
 		//run alg
 		if(alg==1)
@@ -143,9 +143,9 @@ public class MSS2
 	 * @param arr, int[] with the sequence of numbers
 	 * @returns an int for the maximum sum
 	 * */
-     public static int mss1alg(int[] arr)
+     public static long mss1alg(int[] arr)
      {
-         int sum = 0,maxSum = 0;
+         long sum = 0,maxSum = 0;
          for(int i=0; i<arr.length; i++)
          {
              for(int j=i; j<arr.length; j++)
@@ -165,9 +165,9 @@ public class MSS2
 	 *@param arr, int[] with the sequence of numbers
      *@returns an int for the maximum sum
      * */
-	public static int mss2alg(int[] arr)
+	public static long mss2alg(int[] arr)
 	{
-		int sum=0,maxSum=0;
+		long sum=0,maxSum=0;
 		for(int i=0; i<arr.length; i++){
         	sum = 0;
             for(int j=i; j<arr.length; j++){
@@ -191,11 +191,10 @@ public class MSS2
 	 * @returns the max sum across the middle 
 	 *
 	 */
-	public static int middle(int[] arr, int first,int mid, int last)
+	public static long middle(int[] arr, int first,int mid, int last)
 	{
 		//finding maxLeftBoundSum
-		int sum=0;
-		int maxLeftSum = arr[mid];
+		long sum=0, maxLeftSum = 0;
 		for(int i = mid; i>= first; i--)
 		{
 			sum += arr[i];
@@ -204,8 +203,7 @@ public class MSS2
 		}
 
 		//finding maxRightBoundSum
-		int sum2 = 0;
-		int maxRightSum = arr[mid + 1];
+		long sum2 = 0,maxRightSum = 0;
 		for(int i = mid + 1; i<=last; i++)
 		{
 			sum2 += arr[i];
@@ -225,7 +223,7 @@ public class MSS2
 	 *
 	 * @returns an int for the maximum sum
 	 * */
-     public static int mss3alg(int[] arr, int first, int last)
+     public static long mss3alg(int[] arr, int first, int last)
      {
          //base case
          if (first == last)
@@ -244,9 +242,9 @@ public class MSS2
       *@param arr, int[] with the sequence of numbers
       *@returns an int for the maximum sum
       * */
-	 public static int mss4alg(int[] arr)
+	 public static long mss4alg(int[] arr)
 	 {
-		int maxSum = 0, sum = 0;
+		long maxSum = 0, sum = 0;
 		for(int j=0; j<arr.length; j++)
 		{
 			sum += arr[j];
