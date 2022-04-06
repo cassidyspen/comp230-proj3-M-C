@@ -1,8 +1,19 @@
+/*Description: This program will read a set of integer numbers from a user
+ * specified file and allow the user to run an individual algorithm separately
+ * or all four algorithms together. Then the program will display the maximum
+ * subsequence sum and the corresponding elapsed execution time. 
+ *Authors: Madeleine Woo and Cassidy Spencer
+ *Date: 4/6/22
+ */
+
 import java.io.*;
 import java.util.Scanner;
 
-public class MSS2 {
-	public static void main(String[] args){
+public class MSS2 
+{
+	public static void main(String[] args)
+	{	
+		//declare variables
 		BufferedReader input;
 		String inputLine;
 		String rerun = "";
@@ -13,11 +24,7 @@ public class MSS2 {
 			//reading in the file
 			try
 			{
-				//declare variables
-				//int[] intArray;
-			//	int time1 = 0, time2 = 0, time3 = 0, time4 = 0, firstTime = 0, lastTime = 0;
-	
-				//TODO change file input to variable
+				//get user input for file name
 				System.out.println("What file would you like to use?");
 				String user_input = scan.nextLine();
 			
@@ -31,7 +38,7 @@ public class MSS2 {
 				System.out.println("4.     \t MSS4 \t CHEAP");
 				System.out.println("5.     \t ALL  \t Oooh you fancy\n");
 	
-				//user input
+				//user input for menu choice
 				int choice = scan.nextInt();
 				while(choice<1 || choice>5)
 				{
@@ -41,7 +48,6 @@ public class MSS2 {
 
 
 				input = new BufferedReader(new FileReader(user_input));
-				//if((inputLine = input.readLine()) != null) 
 				inputLine = input.readLine();	
 				strArr = inputLine.split(",");
 				input.close();	
@@ -51,6 +57,7 @@ public class MSS2 {
 				for(int i=0; i<strArr.length; i++)
 					intArray[i] = Integer.parseInt(strArr[i]);
 				
+				//switch statement for the menu choice
 				System.out.println();
 				switch(choice)
 				{
@@ -76,12 +83,6 @@ public class MSS2 {
 						System.out.print("MSS4:\t");
 						runAlgs(intArray,4);
 				}
-	
-				//	System.out.println("\nMSS1 answer: "+mss1ans+"\nMSS2 answer: "+mss2ans
-				//						+ "\nMSS3 answer: " +mss3ans+"\nMSS4 answer: "+mss4ans);
-				//}
-			
-
 			} //end try
 			catch (FileNotFoundException e)
 			{
@@ -94,7 +95,7 @@ public class MSS2 {
 				System.exit(1);
 			} // end catch
 		
-			
+			//user input for rerun
 			System.out.println("\nDo you want to run the program again (y for yes and n for no)?");
 			rerun = scan.nextLine();
 			rerun = scan.nextLine();
@@ -108,10 +109,17 @@ public class MSS2 {
 		
 	}
 
+	/*This method will run a specified algorthim, calculate the time elapsed,
+	 * and print out to the user the time and the answer
+	 *
+	 * @param intArray, int[] with the sequence of numbers
+	 * @param alg, int for the algorithm number to run
+	 */
 	public static void runAlgs(int[] intArray,int alg)
 	{
 		long firstTime = System.nanoTime();
 		int answer = 0;
+		
 		//run alg
 		if(alg==1)
 			answer = mss1alg(intArray);
@@ -130,7 +138,11 @@ public class MSS2 {
 		System.out.println("Answer: "+answer+"\tTime: "+time);
 
 	}
-	/*method for mss1*/
+	/*This method will implement the first approach to the mss problem.
+	 *
+	 * @param arr, int[] with the sequence of numbers
+	 * @returns an int for the maximum sum
+	 * */
      public static int mss1alg(int[] arr)
      {
          int sum = 0,maxSum = 0;
@@ -148,7 +160,11 @@ public class MSS2 {
          return maxSum;
      }
 
-	/*MSS2 Algorithm*/
+	/*This method will implement the second approach to the mss problem.
+     *
+	 *@param arr, int[] with the sequence of numbers
+     *@returns an int for the maximum sum
+     * */
 	public static int mss2alg(int[] arr)
 	{
 		int sum=0,maxSum=0;
@@ -164,8 +180,17 @@ public class MSS2 {
         return maxSum;
     }
 
-	//Finds the max of the maxLeftBoundSum, maxRightBoundSum, and 
-	//maxLeftBoundSum + maxRightBoundSum
+	/*This method will find the maximum sequence sum that goes across the
+	 * middle of a sequence.
+	 *
+	 * @param arr, int[] for the sequence of numbers
+	 * @param first, int for the first index
+	 * @param mid, int for the middle index
+	 * @param last, int for the last index
+	 *
+	 * @returns the max sum across the middle 
+	 *
+	 */
 	public static int middle(int[] arr, int first,int mid, int last)
 	{
 		//finding maxLeftBoundSum
@@ -190,7 +215,16 @@ public class MSS2 {
 
 		return Math.max(maxRightSum + maxLeftSum, Math.max(maxLeftSum, maxRightSum));
 	}
- /*method for recursion*/
+	/*This method impements the third approach to the mss problem. It uses
+	 * recursion and the middle function to find the max of the left and right
+	 * sums and the sum across the middle
+	 *
+	 * @param arr, int[] for the number sequence
+	 * @param first, int for the first index
+	 * @param last, int for the last index
+	 *
+	 * @returns an int for the maximum sum
+	 * */
      public static int mss3alg(int[] arr, int first, int last)
      {
          //base case
@@ -205,7 +239,11 @@ public class MSS2 {
          return Math.max(mss3alg(arr,first,mid), Math.max(mss3alg(arr,mid+1,last),middle(arr,first,mid,last)));
  
      }
-	 /*method for mss4*/
+	 /*This method will implement the fourth approach to the mss problem.
+      *
+      *@param arr, int[] with the sequence of numbers
+      *@returns an int for the maximum sum
+      * */
 	 public static int mss4alg(int[] arr)
 	 {
 		int maxSum = 0, sum = 0;
@@ -219,5 +257,6 @@ public class MSS2 {
 		}
 		return maxSum;
 	 }
-}
+
+}//end class
 
