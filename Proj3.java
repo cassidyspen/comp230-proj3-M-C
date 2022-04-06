@@ -86,7 +86,7 @@ public class Proj3
 			} //end try
 			catch (FileNotFoundException e)
 			{
-				System.out.println("\nFile not found, please enter a valid file name.");
+				System.out.println("\nFile not found, please rerun with a valid file name.");
 				System.exit(1);
 			} // catch
 			catch (IOException e)
@@ -135,7 +135,7 @@ public class Proj3
 		long time = lastTime - firstTime;
 
 		//display to user
-		System.out.println("Answer: "+answer+"\tTime: "+time);
+		System.out.println("Answer: "+answer+"\tTime (nanoseconds): "+time);
 
 	}
 	/*This method will implement the first approach to the mss problem.
