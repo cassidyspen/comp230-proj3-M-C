@@ -8,6 +8,7 @@
 
 import java.io.*;
 import java.util.Scanner;
+import java.awt.*;
 
 public class Proj3 
 {
@@ -95,6 +96,8 @@ public class Proj3
 				System.exit(1);
 			} // end catch
 		
+			Toolkit.getDefaultToolkit().beep(); //beep to notify when it's done
+			
 			//user input for rerun
 			System.out.println("\nDo you want to run the program again (y for yes and n for no)?");
 			rerun = scan.nextLine();
